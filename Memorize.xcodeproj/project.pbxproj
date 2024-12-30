@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1176AB242D2221D900855C9C /* MemorizeGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1176AB232D2221D900855C9C /* MemorizeGame.swift */; };
 		11C85D872CF27AFA00D65589 /* MemorizeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C85D862CF27AFA00D65589 /* MemorizeApp.swift */; };
 		11C85D892CF27AFA00D65589 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C85D882CF27AFA00D65589 /* ContentView.swift */; };
 		11C85D8B2CF27AFC00D65589 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11C85D8A2CF27AFC00D65589 /* Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1176AB232D2221D900855C9C /* MemorizeGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorizeGame.swift; sourceTree = "<group>"; };
 		11C85D832CF27AFA00D65589 /* Memorize.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Memorize.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11C85D862CF27AFA00D65589 /* MemorizeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorizeApp.swift; sourceTree = "<group>"; };
 		11C85D882CF27AFA00D65589 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -51,6 +53,7 @@
 		11C85D852CF27AFA00D65589 /* Memorize */ = {
 			isa = PBXGroup;
 			children = (
+				1176AB232D2221D900855C9C /* MemorizeGame.swift */,
 				11C85D862CF27AFA00D65589 /* MemorizeApp.swift */,
 				11C85D882CF27AFA00D65589 /* ContentView.swift */,
 				11C85D8A2CF27AFC00D65589 /* Assets.xcassets */,
@@ -139,6 +142,7 @@
 			files = (
 				11C85D892CF27AFA00D65589 /* ContentView.swift in Sources */,
 				11C85D872CF27AFA00D65589 /* MemorizeApp.swift in Sources */,
+				1176AB242D2221D900855C9C /* MemorizeGame.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
