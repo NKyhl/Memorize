@@ -14,6 +14,7 @@ struct EmojiMemoryGameView: View {
         VStack {
             ScrollView {
                 cards
+                    .animation(.default, value: viewModel.cards)
             }
             Button("Shuffle") {
                 viewModel.shuffle()
@@ -24,10 +25,13 @@ struct EmojiMemoryGameView: View {
     
     var cards: some View { // This is a normal function, not a ViewBuilder. Has an implicit return
         LazyVGrid(columns: [GridItem(.adaptive(minimum: 85), spacing: 0)], spacing: 0) { // This is a ViewBuilder
-            ForEach(viewModel.cards.indices, id: \.self) { index in
-                CardView(viewModel.cards[index])
+            ForEach(viewModel.cards) { card in
+                CardView(card)
                     .aspectRatio(2/3, contentMode: .fit)
                     .padding(4)
+                    .onTapGesture {
+                        viewModel.choose(card)
+                    }
             }
         }
         .foregroundColor(.green)
@@ -57,6 +61,7 @@ struct CardView: View {
             .opacity(card.isFaceUp ? 1 : 0)
             base.fill().opacity(card.isFaceUp ? 0 : 1)
         }
+        .opacity(card.isFaceUp || !card.isMatched ? 1 : 0)
     }
 }
 
