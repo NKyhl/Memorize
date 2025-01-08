@@ -9,6 +9,8 @@ import Foundation
 
 struct MemoryGame<CardContent> where CardContent: Equatable {
     private(set) var cards: Array<Card> // viewing is allowed, but setting is private. called access control
+    private(set) var score: Int = 0
+    private var seen: Set<String> = []
     
     init(numberOfPairsOfCards: Int, cardContentFactory: (Int) -> CardContent) {
         cards = [] // or Array<Card>() or [Card]()
@@ -27,18 +29,30 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
     
     mutating func choose(_ card: Card) {
         if let chosenIndex = cards.firstIndex(where: {$0.id == card.id}) {
-            if !cards[chosenIndex].isFaceUp && !cards[chosenIndex].isMatched {
-                if let potentialMatchIndex = indexOfTheOneAndOnlyFaceUpCard {
-                    if cards[chosenIndex].content == cards[potentialMatchIndex].content {
-                        cards[chosenIndex].isMatched = true
-                        cards[potentialMatchIndex].isMatched = true
-                    }
-                } else {
-                    indexOfTheOneAndOnlyFaceUpCard = chosenIndex
-                }
-                
-                cards[chosenIndex].isFaceUp = true
+            if cards[chosenIndex].isFaceUp || cards[chosenIndex].isMatched {
+                return
             }
+            
+            if let potentialMatchIndex = indexOfTheOneAndOnlyFaceUpCard {
+                if cards[chosenIndex].content == cards[potentialMatchIndex].content {
+                    cards[chosenIndex].isMatched = true
+                    cards[potentialMatchIndex].isMatched = true
+                    score += 2
+                } else {
+                    if seen.contains(cards[chosenIndex].id) {
+                        score -= 1
+                    }
+                    if seen.contains(cards[potentialMatchIndex].id) {
+                        score -= 1
+                    }
+                }
+                seen.insert(cards[chosenIndex].id)
+                seen.insert(cards[potentialMatchIndex].id)
+            } else {
+                indexOfTheOneAndOnlyFaceUpCard = chosenIndex
+            }
+            
+            cards[chosenIndex].isFaceUp = true
         }
     }
     

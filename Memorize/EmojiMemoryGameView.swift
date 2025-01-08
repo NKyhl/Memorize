@@ -12,12 +12,16 @@ struct EmojiMemoryGameView: View {
     
     var body: some View { // Computed property: recomputed every time someone asks for this
         VStack {
+            Text("\(viewModel.themeName) Game")
+                .font(.largeTitle)
+            Text("Score: \(viewModel.score)")
+                .font(.title)
             ScrollView {
                 cards
                     .animation(.default, value: viewModel.cards)
             }
-            Button("Shuffle") {
-                viewModel.shuffle()
+            Button("New Game") {
+                viewModel.reset()
             }
         }
         .padding() // Some modifiers are applied to the VStack, and not to each item inside
@@ -34,7 +38,7 @@ struct EmojiMemoryGameView: View {
                     }
             }
         }
-        .foregroundColor(.green)
+        .foregroundColor(viewModel.themeColor)
     }
 }
 
